@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 // Components
 import ImageComponent from "./ImageComponent";
+import FavoriteComponent from "./FavoriteComponent";
 
 import StyleContants from "../contants/StyleContants";
 
@@ -18,7 +19,18 @@ export default function CharacterComponent(props) {
         <ImageComponent imageUrl={character.image} />
 
         <View style={{ marginBottom: 20 }}>
-          <Text style={styles.name}>{character.name}</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 5,
+            }}
+          >
+            <FavoriteComponent character={character} />
+
+            <Text style={styles.name}>{character.name}</Text>
+          </View>
+
           <Text style={styles.status}>{character.status}</Text>
         </View>
 
@@ -51,6 +63,7 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "700",
     fontSize: 25,
+    marginLeft: 10,
   },
   buttonPrimary: {
     borderRadius: StyleContants.radius.default,
